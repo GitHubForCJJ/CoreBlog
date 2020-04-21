@@ -15,10 +15,16 @@ namespace Blog.EntityFramework
     {
         private readonly DbSet<TEntity> _dbSet;
         private readonly DbContext _dbContext;
+        /// <summary>
+        /// 获取 当前单元操作对象
+        /// </summary>
+        public IUnitOfWork UnitOfWork { get; }
 
-        public BaseRepository()
-        { 
-
+        public BaseRepository(IServiceProvider serviceProvider)
+        {
+            UnitOfWork = serviceProvider.GetUnitOfWork<TEntity, TKey>();
+            _dbContext = (DbContext)UnitOfWork.GetDbContext<TEntity, TKey>();
+            _dbSet = ((DbContext)_dbContext).Set<TEntity>();
         }
 
         #region 同步方法

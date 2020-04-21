@@ -12,7 +12,7 @@ namespace Blog.EntityFramework
         public static IServiceCollection AddBlogDbService(this IServiceCollection collection)
         {
            
-            collection.AddScoped(typeof(IRepository<,>), typeof(BaseRepository<,>));
+            collection.TryAddScoped(typeof(IRepository<,>), typeof(BaseRepository<,>));
             //collection.RegisterGeneric(typeof(BaseRepository<,>)).As(typeof(IRepository<,>)).InstancePerDependency();
             collection.AddScoped<IUnitOfWork, UnitOfWork>();
             return collection;
