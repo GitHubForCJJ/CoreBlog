@@ -70,7 +70,6 @@ namespace Blog.EntityFramework
             {
                 return dbContext;
             }
-
             dbContext = (DbContextBase)_serviceProvider.GetService(entityType);
             if (!dbContext.ExistsRelationalDatabase())
             {

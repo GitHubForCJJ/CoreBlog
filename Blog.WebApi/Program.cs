@@ -19,6 +19,8 @@ namespace Blog.WebApi
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                 .UseContentRoot(Directory.GetCurrentDirectory())
+                 //.UseUrls("http://localhost:8881")
                 .UseStartup<Startup>();
     }
 }

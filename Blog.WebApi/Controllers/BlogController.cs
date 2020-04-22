@@ -65,7 +65,7 @@ namespace Blog.WebApi.Controllers
                 var list = blogServices.CategoryRep.Query();
                 return new JsonResponse { Code = 0, Data = list };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.LogError(ex, "BlogController/Cat");
                 return new JsonResponse { Code = 1, Msg = "程序好像开小差了" + ex.Message };
